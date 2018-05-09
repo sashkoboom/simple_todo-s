@@ -1,0 +1,226 @@
+$primary-color: #F3F3F3;
+$aqua-color: #4dffdb;
+$paper-color: white;
+$font-stack: Helvetica, sans-serif;
+
+//Google fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300,400');
+@import url('https://fonts.googleapis.com/css?family=Damion');
+
+$roboto: 'Roboto', sans-serif;
+$opens-sans: 'Open Sans', sans-serif;
+$damion: 'Damion', cursive;
+
+@mixin display-flex(){
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+body {
+  margin: 0;
+  background-color: $primary-color;
+  font-family: $font-stack;
+}
+.content {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  @include display-flex;
+
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+
+  .paper{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    background-color: $paper-color ;
+    width: percentage(8/10);
+    @include display-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2em;
+    min-height: 80vh;
+
+    header{
+      @include display-flex;
+      justify-content: center;
+
+
+      h1{
+        font-family: $damion, $font-stack;
+        font-weight: 300;
+      }
+
+    }
+
+    .task-list {
+
+      font-family: $opens-sans;
+      font-size: 20px;
+
+      .task {
+        @include display-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+        padding: 5px;
+        padding-top: 6px;
+
+
+        .strikethrough{
+          display: inline-block;
+          position: relative;
+          border: none;
+          transition: all 0.5s cubic-bezier(.55, 0, .1, 1);
+        }
+
+
+        .strikethrough:after {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 100%;
+          height: 2px;
+          box-shadow: 0 1px rgba(255,255,255,0.6);
+          margin-top: -0.7em;
+          background: black;
+          transform-origin: center left;
+          transform: scaleX(0);
+          animation: strikethrough 1s 0.5s cubic-bezier(.55, 0, .1, 1) 1;
+          transition: transform 0.5s cubic-bezier(.55, 0, .1, 1);
+        }
+
+        @keyframes strikethrough {
+          from {
+            transform: scaleX(0);
+          }
+          to {
+            transform: scaleX(1);
+          }
+        }
+
+        i.fa.fa-pencil{
+          align-self: center;
+          display: none;
+          padding-left: 1em;
+        }
+
+        i.fa.fa-circle, i.fa.fa-check-circle{
+          align-self: center;
+          flex-grow: 0;
+          padding-right: 1em;
+          font-size: 24px;
+        }
+
+        span{
+          flex-grow: 1;
+        }
+
+      }
+
+      .task:hover{
+        i.fa.fa-pencil{
+          display: block;
+        }
+      }
+
+
+      form{
+        @include display-flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      input[type="text"] {
+        outline: none;
+        flex-grow: 2;
+        border: none;
+        width: 100%;
+        font-family: $opens-sans;
+        font-size: 20px;
+        padding: 0;
+        margin: 0;
+      }
+      label{  display:none; }
+
+      button{
+        outline: none;
+      }
+    }
+
+  }
+
+  footer{
+    font-family: $opens-sans;
+    font-size: 10px;
+    padding: 1em 0.75em 1.1em 10em;
+    padding-left: percentage(1/7);
+    margin-bottom: 0;
+    background-color: $aqua-color;
+
+  }
+}
+
+main, #footer {
+
+  flex-shrink: 0;
+}
+
+
+/*----------Media queries--------------*/
+
+@media only screen and (min-width: 768px) {
+  /* tablets and desktop */
+
+  header{
+    padding-top: 7%;
+    h1{ font-size: 65px;}
+
+  }
+
+
+
+  .task-list{
+    width: 50%;
+  }
+
+
+}
+
+@media only screen and (max-width: 767px) {
+  /* phones */
+  html, body{
+    height: 100%;
+    width: 100%;
+    background-color: $paper-color; }
+
+  .paper{
+    width: 100%;
+  }
+
+  header{
+    padding-top: 0;
+    h1{
+      font-size: 47px;
+    }
+
+  }
+
+  .task-list{
+    width: 90%;
+  }
+
+}
+

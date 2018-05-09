@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:300,400");
+@import url("https://fonts.googleapis.com/css?family=Damion");
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  margin: 0;
+  background-color: #F3F3F3;
+  font-family: Helvetica, sans-serif; }
+
+.content {
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center; }
+  .content .paper {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    background-color: white;
+    width: 80%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2em;
+    min-height: 80vh; }
+    .content .paper header {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -moz-flex;
+      display: -webkit-flex;
+      display: flex;
+      justify-content: center; }
+      .content .paper header h1 {
+        font-family: "Damion", cursive, Helvetica, sans-serif;
+        font-weight: 300; }
+    .content .paper .task-list {
+      font-family: "Open Sans", sans-serif;
+      font-size: 20px; }
+      .content .paper .task-list .task {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+        padding: 5px;
+        padding-top: 6px; }
+        .content .paper .task-list .task .strikethrough {
+          display: inline-block;
+          position: relative;
+          border: none;
+          transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1); }
+        .content .paper .task-list .task .strikethrough:after {
+          content: '';
+          position: absolute;
+          display: block;
+          width: 100%;
+          height: 2px;
+          box-shadow: 0 1px rgba(255, 255, 255, 0.6);
+          margin-top: -0.7em;
+          background: black;
+          transform-origin: center left;
+          transform: scaleX(0);
+          animation: strikethrough 1s 0.5s cubic-bezier(0.55, 0, 0.1, 1) 1;
+          transition: transform 0.5s cubic-bezier(0.55, 0, 0.1, 1); }
+
+@keyframes strikethrough {
+  from {
+    transform: scaleX(0); }
+  to {
+    transform: scaleX(1); } }
+        .content .paper .task-list .task i.fa.fa-pencil {
+          align-self: center;
+          display: none;
+          padding-left: 1em; }
+        .content .paper .task-list .task i.fa.fa-circle, .content .paper .task-list .task i.fa.fa-check-circle {
+          align-self: center;
+          flex-grow: 0;
+          padding-right: 1em;
+          font-size: 24px; }
+        .content .paper .task-list .task span {
+          flex-grow: 1; }
+      .content .paper .task-list .task:hover i.fa.fa-pencil {
+        display: block; }
+      .content .paper .task-list form {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%; }
+      .content .paper .task-list input[type="text"] {
+        outline: none;
+        flex-grow: 2;
+        border: none;
+        width: 100%;
+        font-family: "Open Sans", sans-serif;
+        font-size: 20px;
+        padding: 0;
+        margin: 0; }
+      .content .paper .task-list label {
+        display: none; }
+      .content .paper .task-list button {
+        outline: none; }
+  .content footer {
+    font-family: "Open Sans", sans-serif;
+    font-size: 10px;
+    padding: 1em 0.75em 1.1em 10em;
+    padding-left: 14.28571%;
+    margin-bottom: 0;
+    background-color: #4dffdb; }
+
+main, #footer {
+  flex-shrink: 0; }
+
+/*----------Media queries--------------*/
+@media only screen and (min-width: 768px) {
+  /* tablets and desktop */
+  header {
+    padding-top: 7%; }
+    header h1 {
+      font-size: 65px; }
+  .task-list {
+    width: 50%; } }
+
+@media only screen and (max-width: 767px) {
+  /* phones */
+  html, body {
+    height: 100%;
+    width: 100%;
+    background-color: white; }
+  .paper {
+    width: 100%; }
+  header {
+    padding-top: 0; }
+    header h1 {
+      font-size: 47px; }
+  .task-list {
+    width: 90%; } }
